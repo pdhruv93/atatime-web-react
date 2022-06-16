@@ -1,31 +1,26 @@
-import { memo, useState } from "react";
-import { LoadScript, GoogleMap, Marker } from "@react-google-maps/api";
-import { useUserContext } from "../../context/UserContext";
-import { useGoogleMapContext } from "../../context/GoogleMapContext";
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { memo, useState } from 'react';
+import { useGoogleMapContext } from '../../context/GoogleMapContext';
+import { useUserContext } from '../../context/UserContext';
 
 function MapView(): JSX.Element {
   const { appUser } = useUserContext();
   const { setMap, markers } = useGoogleMapContext();
 
-  const [libs] = useState<
-    ("places" | "drawing" | "geometry" | "localContext" | "visualization")[]
-  >(["places"]);
+  const [libs] = useState<('places' | 'drawing' | 'geometry' | 'localContext' | 'visualization')[]>(
+    ['places'],
+  );
 
   return (
-    <LoadScript
-      googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
-      libraries={libs}
-    >
+    <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY} libraries={libs}>
       <GoogleMap
         mapContainerStyle={{
-          width: "100vw",
-          height: "100vh",
-          position: "absolute",
+          width: '100vw',
+          height: '100vh',
+          position: 'absolute',
           top: 0,
         }}
-        center={
-          appUser?.location?.locationCoords || { lat: -3.745, lng: -38.523 }
-        }
+        center={appUser?.location?.locationCoords || { lat: -3.745, lng: -38.523 }}
         zoom={5}
         options={{
           mapId: process.env.REACT_APP_GOOGLE_MAPS_MAP_ID,

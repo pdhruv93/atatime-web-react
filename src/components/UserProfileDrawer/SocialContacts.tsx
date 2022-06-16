@@ -1,24 +1,23 @@
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import Alert from "@mui/material/Alert";
-import Stack from "@mui/material/Stack";
-import { useFormik } from "formik";
-import * as yup from "yup";
-import { useUserContext } from "../../context/UserContext";
-import { AppUserInterface, DBResponseInterface } from "../../interfaces";
-import { toast } from "react-toastify";
+import * as yup from 'yup';
+import { AppUserInterface, DBResponseInterface } from '../../interfaces';
+import { toast } from 'react-toastify';
+import { useFormik } from 'formik';
+import { useUserContext } from '../../context/UserContext';
+import Alert from '@mui/material/Alert';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 
 export default function SocialContacts(): JSX.Element {
   const { realmUser, appUser, setAppUser } = useUserContext();
-  const phoneRegExp =
-    /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+  const phoneRegExp = new RegExp('/^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$/im');
 
   const validationSchema = yup.object({
     fbUsername: yup.string(),
     igHandle: yup.string(),
-    waNumber: yup.string().matches(phoneRegExp, "Phone number is not valid"),
+    waNumber: yup.string().matches(phoneRegExp, 'Phone number is not valid'),
   });
 
   const formik = useFormik({
@@ -36,52 +35,52 @@ export default function SocialContacts(): JSX.Element {
           waNumber: formValues.waNumber,
         })
         .then((res: DBResponseInterface) => {
-          console.log("SoMe details updated for user at DB!!");
+          console.log('SoMe details updated for user at DB!!');
           setAppUser({
             ...appUser,
             soMeDetails: res.soMeDetails,
           } as AppUserInterface);
 
-          toast("SoMe details updated for user at DB!!");
+          toast('SoMe details updated for user at DB!!');
         });
     },
   });
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <Stack sx={{ width: "100%" }} spacing={1}>
-        <Typography variant="h6" gutterBottom component="div">
+      <Stack sx={{ width: '100%' }} spacing={1}>
+        <Typography variant='h6' gutterBottom component='div'>
           Contact
         </Typography>
 
-        <Alert severity="info">Allows other uses to connect with you</Alert>
+        <Alert severity='info'>Allows other uses to connect with you</Alert>
 
         <TextField
-          label="Your Facebook username"
-          variant="outlined"
+          label='Your Facebook username'
+          variant='outlined'
           sx={{ mb: 2 }}
           fullWidth
-          id="fbUsername"
+          id='fbUsername'
           defaultValue={formik.values.fbUsername}
           onChange={formik.handleChange}
         />
 
         <TextField
-          label="Your Insta Handle"
-          variant="outlined"
+          label='Your Insta Handle'
+          variant='outlined'
           sx={{ mb: 2 }}
           fullWidth
-          id="igHandle"
+          id='igHandle'
           defaultValue={formik.values.igHandle}
           onChange={formik.handleChange}
         />
 
         <TextField
-          label="Your Whatsapp Number(+23XXXXXX)"
-          variant="outlined"
+          label='Your Whatsapp Number(+23XXXXXX)'
+          variant='outlined'
           sx={{ mb: 2 }}
           fullWidth
-          id="waNumber"
+          id='waNumber'
           defaultValue={formik.values.waNumber}
           onChange={formik.handleChange}
           error={formik.touched.waNumber && Boolean(formik.errors.waNumber)}
@@ -89,7 +88,7 @@ export default function SocialContacts(): JSX.Element {
         />
 
         <Box>
-          <Button variant="contained" type="submit">
+          <Button variant='contained' type='submit'>
             Update
           </Button>
         </Box>

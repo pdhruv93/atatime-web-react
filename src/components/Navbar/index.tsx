@@ -1,19 +1,19 @@
-import { useState } from "react";
-import { useUserContext } from "../../context/UserContext";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import LoginButton from "../LoginButton";
-import UserProfileDrawer from "../UserProfileDrawer";
-import { toast } from "react-toastify";
-import { googleLogout } from "@react-oauth/google";
+import { googleLogout } from '@react-oauth/google';
+import { toast } from 'react-toastify';
+import { useState } from 'react';
+import { useUserContext } from '../../context/UserContext';
+import AppBar from '@mui/material/AppBar';
+import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import IconButton from '@mui/material/IconButton';
+import LoginButton from '../LoginButton';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Toolbar from '@mui/material/Toolbar';
+import Tooltip from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
+import UserProfileDrawer from '../UserProfileDrawer';
 
 const Navbar = () => {
   const { appUser, setAppUser } = useUserContext();
@@ -28,21 +28,21 @@ const Navbar = () => {
   };
 
   const logout = () => {
-    console.log("Logging Out User..");
+    console.log('Logging Out User..');
     googleLogout();
     setAppUser(null);
-    toast("User Logged Out!!");
+    toast('User Logged Out!!');
   };
 
   return (
-    <AppBar position="sticky">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
+    <AppBar position='sticky'>
+      <Container maxWidth='xl'>
+        <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
           <Typography
-            variant="h6"
+            variant='h6'
             noWrap
-            component="div"
-            sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
+            component='div'
+            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
             @@time
           </Typography>
@@ -50,31 +50,31 @@ const Navbar = () => {
           <Box sx={{ flexGrow: 0 }}>
             {appUser ? (
               <>
-                <Tooltip title="Open settings">
+                <Tooltip title='Open settings'>
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                     <Avatar alt={appUser.name} src={appUser.profilePic} />
                   </IconButton>
                 </Tooltip>
                 <Menu
-                  sx={{ mt: "45px" }}
-                  id="menu-appbar"
+                  sx={{ mt: '45px' }}
+                  id='menu-appbar'
                   anchorEl={anchorElUser}
                   anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
+                    vertical: 'top',
+                    horizontal: 'right',
                   }}
                   keepMounted
                   transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
+                    vertical: 'top',
+                    horizontal: 'right',
                   }}
                   open={Boolean(anchorElUser)}
                   onClick={handleCloseUserMenu}
                   onClose={handleCloseUserMenu}
                 >
                   <UserProfileDrawer />
-                  <MenuItem key="logout" onClick={logout}>
-                    <Typography textAlign="center">Logout</Typography>
+                  <MenuItem key='logout' onClick={logout}>
+                    <Typography textAlign='center'>Logout</Typography>
                   </MenuItem>
                 </Menu>
               </>

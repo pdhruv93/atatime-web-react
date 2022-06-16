@@ -1,20 +1,20 @@
-import * as Realm from "realm-web";
-import { useState, useEffect } from "react";
-import { GoogleOAuthProvider } from "@react-oauth/google";
-import { ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
-import { ToastContainer } from "react-toastify";
-import FloatingBar from "../ActivitiesFAB";
-import AboutModal from "../AboutModal";
-import { getUser } from "../../database";
-import Navbar from "../Navbar";
-import MapView from "../MapView";
-import { customTheme } from "../../theme";
-import { AppUserInterface } from "../../interfaces";
-import { UserContext } from "../../context/UserContext";
-import { GoogleMapContext } from "../../context/GoogleMapContext";
-import "./styles/App.module.css";
-import "react-toastify/dist/ReactToastify.css";
+import './styles/App.module.css';
+import 'react-toastify/dist/ReactToastify.css';
+import * as Realm from 'realm-web';
+import { AppUserInterface } from '../../interfaces';
+import { GoogleMapContext } from '../../context/GoogleMapContext';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import { ThemeProvider } from '@mui/material/styles';
+import { ToastContainer } from 'react-toastify';
+import { UserContext } from '../../context/UserContext';
+import { customTheme } from '../../theme';
+import { getUser } from '../../database';
+import { useEffect, useState } from 'react';
+import AboutModal from '../AboutModal';
+import CssBaseline from '@mui/material/CssBaseline';
+import FloatingBar from '../ActivitiesFAB';
+import MapView from '../MapView';
+import Navbar from '../Navbar';
 
 function App(): JSX.Element {
   const [realmUser, setRealmUser] = useState<Realm.User | null>(null);
@@ -36,18 +36,12 @@ function App(): JSX.Element {
       <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
         <CssBaseline />
         <UserContext.Provider value={{ realmUser, appUser, setAppUser }}>
-          <GoogleMapContext.Provider
-            value={{ map, setMap, markers, setMarkers }}
-          >
+          <GoogleMapContext.Provider value={{ map, setMap, markers, setMarkers }}>
             <MapView />
             <Navbar />
             <FloatingBar />
             <AboutModal />
-            <ToastContainer
-              position="bottom-left"
-              newestOnTop={false}
-              limit={1}
-            />
+            <ToastContainer position='bottom-left' newestOnTop={false} limit={1} />
           </GoogleMapContext.Provider>
         </UserContext.Provider>
       </GoogleOAuthProvider>
