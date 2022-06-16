@@ -10,9 +10,9 @@ other users doing the same activity at that time around the world.
 > Check the react-native version [here](https://github.com/pdhruv93/atatime-react-native-final)
 
 ## Tech Stack used
-- **Frontend: ** React(18.1.0) and TypeScipt, React MUI
-- **Backend: ** MongoDB Atlas DB and MongoDB Atlas App Services(Serverless functions, Triggers)
-- **Other: ** Google OAuth2, Google Maps, Formik+Yup
+- ** Frontend: ** React(18.1.0) and TypeScipt, React MUI
+- ** Backend: ** MongoDB Atlas DB and MongoDB Atlas App Services(Serverless functions, Triggers)
+- ** Other: ** Google OAuth2, Google Maps, Formik+Yup
 
 
 ## Sample Screenshots
@@ -31,7 +31,7 @@ other users doing the same activity at that time around the world.
 ### User Profile Modal and update sections
 ![](screenshots/profile_section.PNG)
 
-### Modal showing other users who are doing same activity whenever user marks any activity
+### Modal showing other users who are doing same activity whenever user marks any activity alongwith their markers on the map
 ![](screenshots/other_users.PNG)
 
 ### Google Cloud Platform used for Google Maps and OAuth2
