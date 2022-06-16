@@ -10,7 +10,7 @@ other users doing the same activity at that time around the world.
 > Check the react-native version [here](https://github.com/pdhruv93/atatime-react-native-final)
 
 ## Tech Stack used
-- **Frontend:** React(18.1.0) and TypeScipt, React MUI
+- **Frontend:** React(18.1.0) and TypeScipt, [React MUI(Material UI)](https://mui.com/)
 - **Backend:** MongoDB Atlas DB and MongoDB Atlas App Services(Serverless functions, Triggers)
 - **Other:** Google OAuth2, Google Maps, Formik+Yup
 
