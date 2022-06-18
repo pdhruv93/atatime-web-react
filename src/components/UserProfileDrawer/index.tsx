@@ -7,6 +7,7 @@ import SocialContacts from './SocialContacts';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import UserLocation from './UserLocation';
+import styles from './styles/UserProfileDrawer.module.css';
 
 export default function UserProfileDrawer(): JSX.Element {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -30,12 +31,12 @@ export default function UserProfileDrawer(): JSX.Element {
       </MenuItem>
 
       <Drawer anchor='right' open={isOpen} onClose={toggleDrawer()}>
-        <Box sx={{ width: 380, padding: 5 }} role='presentation'>
+        <Box className={styles.drawerContainer} sx={{ p: 5 }} role='presentation'>
           <Typography variant='h5' sx={{ mb: 2 }} gutterBottom component='div'>
             Profile Options
           </Typography>
 
-          <Stack sx={{ width: '100%' }} spacing={6}>
+          <Stack className={styles.profileOptionsStack} spacing={6}>
             <UserLocation />
             <SocialContacts />
             <PastActivities />

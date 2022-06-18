@@ -14,6 +14,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import UserProfileDrawer from '../UserProfileDrawer';
+import styles from './styles/Navbar.module.css';
 
 const Navbar = () => {
   const { appUser, setAppUser } = useUserContext();
@@ -47,16 +48,16 @@ const Navbar = () => {
             @@time
           </Typography>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box className={styles.userProfileDetails}>
             {appUser ? (
               <>
                 <Tooltip title='Open settings'>
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <IconButton sx={{ p: 0 }} onClick={handleOpenUserMenu}>
                     <Avatar alt={appUser.name} src={appUser.profilePic} />
                   </IconButton>
                 </Tooltip>
                 <Menu
-                  sx={{ mt: '45px' }}
+                  className={styles.userProfileMenu}
                   id='menu-appbar'
                   anchorEl={anchorElUser}
                   anchorOrigin={{

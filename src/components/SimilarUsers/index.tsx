@@ -16,6 +16,7 @@ import React, { KeyboardEvent, MouseEvent, useEffect, useState } from 'react';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import styles from './styles/SimilarUsers.module.css';
 
 export default function SimilarUsers({
   activityId,
@@ -72,7 +73,7 @@ export default function SimilarUsers({
 
   return (
     <Drawer anchor='left' open={isOpen} onClose={toggleDrawer()}>
-      <Box sx={{ width: 380, padding: 5 }} role='presentation'>
+      <Box className={styles.drawerContainer} sx={{ p: 5 }} role='presentation'>
         <Typography component='div'></Typography>
 
         <Typography variant='h5' sx={{ mb: 2 }} component='div'>
@@ -82,7 +83,7 @@ export default function SimilarUsers({
           </Box>
         </Typography>
 
-        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+        <List className={styles.usersList} sx={{ bgcolor: 'background.paper' }}>
           {similarUsers.map((similarUser, index) => {
             const user = similarUser.userDetails;
 

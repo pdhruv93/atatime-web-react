@@ -6,6 +6,7 @@ import Icon from '@mui/material/Icon';
 import Stack from '@mui/material/Stack';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
+import styles from './styles/UserProfileDrawer.module.css';
 
 export default function PastActivities(): JSX.Element {
   const { realmUser, appUser } = useUserContext();
@@ -21,7 +22,7 @@ export default function PastActivities(): JSX.Element {
   }, []);
 
   return (
-    <Stack sx={{ width: '100%' }} spacing={1}>
+    <Stack className={styles.profileOptionsStack} spacing={1}>
       <Typography variant='h6' gutterBottom component='div'>
         Your past activities
       </Typography>

@@ -7,18 +7,7 @@ import Modal from '@mui/material/Modal';
 import Stack from '@mui/material/Stack';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
-
-const style = {
-  position: 'absolute' as const,
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 1000,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
+import styles from './styles/AboutModal.module.css';
 
 export default function AboutModal() {
   const [open, setOpen] = useState(false);
@@ -28,12 +17,7 @@ export default function AboutModal() {
   return (
     <>
       <Tooltip title='About'>
-        <Fab
-          color='primary'
-          aria-label='add'
-          sx={{ position: 'absolute', bottom: 150, right: 46 }}
-          onClick={handleOpen}
-        >
+        <Fab color='primary' aria-label='add' className={styles.modalLauncher} onClick={handleOpen}>
           <HelpIcon />
         </Fab>
       </Tooltip>
@@ -43,12 +27,12 @@ export default function AboutModal() {
         aria-labelledby='modal-modal-title'
         aria-describedby='modal-modal-description'
       >
-        <Box sx={style}>
+        <Box className={styles.modalContainer} sx={{ bgcolor: 'background.paper', p: 4 }}>
           <Typography id='modal-modal-title' variant='h6' component='h2'>
             About @@time
           </Typography>
           <Typography id='modal-modal-description' sx={{ mt: 2 }}>
-            <Stack sx={{ width: '100%' }} spacing={3}>
+            <Stack className={styles.detailsStack} spacing={3}>
               <Typography>
                 We&apos;ve got what you need! Select your current activity and check how many others
                 are doing the same activity as you. And thats it, @@time is ready!! Here are some

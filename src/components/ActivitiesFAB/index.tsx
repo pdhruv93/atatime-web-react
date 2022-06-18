@@ -11,6 +11,7 @@ import SpeedDialAction from '@mui/material/SpeedDialAction';
 import SpeedDialIcon from '@mui/material/SpeedDialIcon';
 import Tooltip from '@mui/material/Tooltip';
 import moment from 'moment';
+import styles from './styles/ActivitiesFAB.module.css';
 
 export default function ActivitiesFAB() {
   const { realmUser, appUser, setAppUser } = useUserContext();
@@ -51,16 +52,7 @@ export default function ActivitiesFAB() {
   return (
     appUser && (
       <>
-        <Box
-          sx={{
-            height: 320,
-            transform: 'translateZ(0px)',
-            flexGrow: 1,
-            position: 'absolute',
-            bottom: 30,
-            right: 30,
-          }}
-        >
+        <Box className={styles.activitiesListContainer}>
           <Tooltip
             title={
               appUser?.location
@@ -70,7 +62,7 @@ export default function ActivitiesFAB() {
           >
             <SpeedDial
               ariaLabel='Mark your activities from here'
-              sx={{ position: 'absolute', bottom: 16, right: 16 }}
+              className={styles.activitiesLaunchButton}
               direction='left'
               icon={appUser?.location ? <SpeedDialIcon /> : <ErrorIcon />}
             >

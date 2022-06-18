@@ -1,4 +1,3 @@
-import './styles/App.module.css';
 import 'react-toastify/dist/ReactToastify.css';
 import * as Realm from 'realm-web';
 import { AppUserInterface } from '../../interfaces';

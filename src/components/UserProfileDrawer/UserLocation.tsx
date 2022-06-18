@@ -11,6 +11,7 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import styles from './styles/UserProfileDrawer.module.css';
 
 export default function UserLocation(): JSX.Element {
   const { realmUser, appUser, setAppUser } = useUserContext();
@@ -68,7 +69,7 @@ export default function UserLocation(): JSX.Element {
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <Stack sx={{ width: '100%' }} spacing={1}>
+      <Stack className={styles.profileOptionsStack} spacing={1}>
         <Typography variant='h6' gutterBottom component='div'>
           Location
         </Typography>
@@ -87,7 +88,7 @@ export default function UserLocation(): JSX.Element {
           />
         </Autocomplete>
 
-        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Box>
           <Button variant='contained' type='submit'>
             Update
           </Button>

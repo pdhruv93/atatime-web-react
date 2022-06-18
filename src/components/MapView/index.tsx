@@ -2,6 +2,7 @@ import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import { memo, useState } from 'react';
 import { useGoogleMapContext } from '../../context/GoogleMapContext';
 import { useUserContext } from '../../context/UserContext';
+import styles from './styles/MapView.module.css';
 
 function MapView(): JSX.Element {
   const { appUser } = useUserContext();
@@ -14,12 +15,7 @@ function MapView(): JSX.Element {
   return (
     <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY} libraries={libs}>
       <GoogleMap
-        mapContainerStyle={{
-          width: '100vw',
-          height: '100vh',
-          position: 'absolute',
-          top: 0,
-        }}
+        mapContainerClassName={styles.mapContainerStyle}
         center={appUser?.location?.locationCoords || { lat: -3.745, lng: -38.523 }}
         zoom={5}
         options={{
