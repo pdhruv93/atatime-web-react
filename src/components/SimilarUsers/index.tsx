@@ -12,6 +12,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import React, { KeyboardEvent, MouseEvent, useEffect, useState } from 'react';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
@@ -23,7 +24,7 @@ export default function SimilarUsers({
   activityName,
 }: SimilarUsersPropsInterface): JSX.Element {
   const { realmUser } = useUserContext();
-  const { setMarkers } = useGoogleMapContext();
+  const { map, setMarkers } = useGoogleMapContext();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [similarUsers, setSimilarUsers] = useState<SimilarUsersInterface[] | []>([]);
 
@@ -65,6 +66,10 @@ export default function SimilarUsers({
           Number(user.userDetails.location?.locationCoords.lng),
         ),
         title: `${user.userDetails.name}, ${user.userDetails.location?.locationName}`,
+        icon: {
+          url: user.userDetails.profilePic,
+          scaledSize: new google.maps.Size(50, 50),
+        },
       });
     });
 
@@ -148,6 +153,21 @@ export default function SimilarUsers({
                               <WhatsAppIcon />
                             </IconButton>
                           )}
+
+                          <IconButton
+                            aria-label='location'
+                            size='small'
+                            onClick={() =>
+                              map?.panTo(
+                                new google.maps.LatLng(
+                                  Number(user.location?.locationCoords.lat),
+                                  Number(user.location?.locationCoords.lng),
+                                ),
+                              )
+                            }
+                          >
+                            <LocationOnIcon />
+                          </IconButton>
                         </Stack>
                       </Stack>
                     }

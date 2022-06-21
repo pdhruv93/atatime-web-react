@@ -47,7 +47,11 @@ export default function UserLocation(): JSX.Element {
                 Number(res.location?.locationCoords.lat),
                 Number(res.location?.locationCoords.lng),
               ),
-              title: 'My Location',
+              title: 'Your Location',
+              icon: {
+                url: res.profilePic,
+                scaledSize: new google.maps.Size(50, 50),
+              },
             }),
           ]);
 

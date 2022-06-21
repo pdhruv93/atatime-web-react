@@ -33,6 +33,7 @@ function MapView(): JSX.Element {
               key={`marker-${index}`}
               position={marker.getPosition() as google.maps.LatLng}
               title={marker.getTitle() as string}
+              icon={marker.getIcon() as string}
             />
           );
         })}
